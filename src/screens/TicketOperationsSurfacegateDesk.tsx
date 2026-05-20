@@ -27,8 +27,8 @@ export function TicketOperationsSurfacegateDesk({ actions }: TicketOperationsSur
       <Circle className="text-[18px]" aria-hidden={true} focusable="false" />
       </div>
       <div>
-      <div className="font-headline-md text-headline-md font-bold text-on-surface leading-tight">SurfaceGate</div>
-      <div className="font-label-md text-label-md text-on-secondary-container leading-tight">Service Desk</div>
+      <div className="font-headline-md text-headline-md font-bold text-on-surface leading-tight"><button type="button" onClick={actions?.["operations-1"]}>SurfaceGate</button></div>
+      <div className="font-label-md text-label-md text-on-secondary-container leading-tight"><button type="button" onClick={actions?.["operations-1"]}>Service Desk</button></div>
       </div>
       </div>
       {/* Navigation Tabs */}
@@ -73,7 +73,7 @@ export function TicketOperationsSurfacegateDesk({ actions }: TicketOperationsSur
       <header className="w-full h-[56px] flex justify-between items-center px-margin-desktop bg-surface border-b border-outline-variant shrink-0">
       {/* Left: Search Area */}
       <div className="flex items-center gap-4 flex-1">
-      <div className="font-headline-md text-headline-md text-primary font-bold md:hidden">SurfaceGate Desk</div>
+      <div className="font-headline-md text-headline-md text-primary font-bold md:hidden"><button type="button" onClick={actions?.["operations-1"]}>SurfaceGate Desk</button></div>
       <div className="hidden md:flex items-center relative max-w-md w-full">
       <Search className="absolute left-2 text-outline text-[20px]" aria-hidden={true} focusable="false" />
       <input className="w-full h-[32px] pl-9 pr-3 bg-surface-container-low border border-outline-variant rounded text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-0 transition-colors" placeholder="Search tickets, customers, or internal docs..." type="text" />

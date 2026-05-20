@@ -27,8 +27,8 @@ export function TicketEditorSurfacegateDesk({ actions }: TicketEditorSurfacegate
                       S
                   </div>
       <div>
-      <div className="font-headline-md text-headline-md font-bold text-on-surface">SurfaceGate</div>
-      <div className="font-label-md text-label-md text-on-surface-variant">Service Desk</div>
+      <div className="font-headline-md text-headline-md font-bold text-on-surface"><button type="button" onClick={actions?.["editor-2"]}>SurfaceGate</button></div>
+      <div className="font-label-md text-label-md text-on-surface-variant"><button type="button" onClick={actions?.["editor-2"]}>Service Desk</button></div>
       </div>
       </div>
       {/* Main Tabs */}
