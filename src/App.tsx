@@ -16,6 +16,51 @@ import {
 } from './screens';
 import { AppProvider, useAppContext } from './contexts/AppContext';
 
+function getPersistenceMessage(state: ReturnType<typeof useAppContext>['state']) {
+  if (state.lastError) {
+    return state.lastError;
+  }
+
+  const latestAction = state.actionLog[0];
+
+  if (latestAction === 'Local data cleared and preferences reset') {
+    return 'Local data cleared and preferences reset.';
+  }
+
+  if (state.storageStatus === 'recovered') {
+    return 'Recovered local workspace data.';
+  }
+
+  if (state.storageStatus === 'restored') {
+    return 'Loaded saved SurfaceGate Desk workspace.';
+  }
+
+  if (state.storageStatus === 'saved') {
+    return 'SurfaceGate Desk workspace saved locally.';
+  }
+
+  return 'SurfaceGate Desk workspace ready.';
+}
+
+function PersistenceStatus() {
+  const { state } = useAppContext();
+  const isError = Boolean(state.lastError);
+
+  return (
+    <section
+      aria-label="Persistence status"
+      aria-live="polite"
+      className={`fixed bottom-4 right-4 z-50 max-w-sm rounded border px-4 py-3 text-sm shadow-lg ${
+        isError ? 'border-amber-300 bg-amber-50 text-amber-950' : 'border-emerald-200 bg-white text-slate-700'
+      }`}
+      data-testid="persistence-status"
+    >
+      <p className="font-semibold text-slate-950">Workspace persistence</p>
+      <p>{getPersistenceMessage(state)}</p>
+    </section>
+  );
+}
+
 function AppShell() {
   const { state, actions } = useAppContext();
   const record = (label: string) => () => actions.recordAction(label);
@@ -182,6 +227,7 @@ function AppShell() {
           }
         />
       )}
+      <PersistenceStatus />
     </div>
   );
 }

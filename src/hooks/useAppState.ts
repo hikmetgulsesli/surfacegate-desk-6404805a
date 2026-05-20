@@ -204,7 +204,7 @@ function reducer(state: AppState, action: Action): AppState {
           storageStatus: 'saved',
           lastError: null,
         },
-        'Preferences reset',
+        'Local data cleared and preferences reset',
       );
     case 'insights:export':
       return log({ ...state, storageStatus: 'saved' }, 'Insight summary exported');
