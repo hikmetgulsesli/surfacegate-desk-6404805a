@@ -1,0 +1,855 @@
+[
+  {
+    "screenId": "9cdda244141b420dbd2ba89c2a8a9977",
+    "title": "Ticket Editor - SurfaceGate Desk",
+    "componentName": "TicketEditorSurfacegateDesk",
+    "file": "src/screens/TicketEditorSurfacegateDesk.tsx",
+    "buttons": 7,
+    "inputs": 3,
+    "links": 7,
+    "actions": [
+      {
+        "id": "create-ticket-1",
+        "kind": "button",
+        "label": "Create Ticket",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "cancel-4",
+        "kind": "button",
+        "label": "Cancel",
+        "index": 3
+      },
+      {
+        "id": "save-changes-5",
+        "kind": "button",
+        "label": "Save Changes",
+        "index": 4
+      },
+      {
+        "id": "recover-draft-6",
+        "kind": "button",
+        "label": "Recover Draft",
+        "index": 5
+      },
+      {
+        "id": "discard-ticket-7",
+        "kind": "button",
+        "label": "Discard Ticket",
+        "index": 6
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "editor-2",
+        "kind": "link",
+        "label": "Editor",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "queues-3",
+        "kind": "link",
+        "label": "Queues",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "workload-4",
+        "kind": "link",
+        "label": "Workload",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "insights-5",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "settings-6",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "help-7",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "screenId": "3a6a67471671457eb3d50fb8b829364c",
+    "title": "Ticket Operations - SurfaceGate Desk",
+    "componentName": "TicketOperationsSurfacegateDesk",
+    "file": "src/screens/TicketOperationsSurfacegateDesk.tsx",
+    "buttons": 12,
+    "inputs": 1,
+    "links": 7,
+    "actions": [
+      {
+        "id": "create-ticket-1",
+        "kind": "button",
+        "label": "Create Ticket",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "filter-4",
+        "kind": "button",
+        "label": "Filter",
+        "index": 3
+      },
+      {
+        "id": "sort-priority-5",
+        "kind": "button",
+        "label": "Sort: Priority",
+        "index": 4
+      },
+      {
+        "id": "button-6-6",
+        "kind": "button",
+        "label": "Button 6",
+        "index": 5
+      },
+      {
+        "id": "button-7-7",
+        "kind": "button",
+        "label": "Button 7",
+        "index": 6
+      },
+      {
+        "id": "retry-connection-8",
+        "kind": "button",
+        "label": "Retry Connection",
+        "index": 7
+      },
+      {
+        "id": "button-9-9",
+        "kind": "button",
+        "label": "Button 9",
+        "index": 8
+      },
+      {
+        "id": "button-10-10",
+        "kind": "button",
+        "label": "Button 10",
+        "index": 9
+      },
+      {
+        "id": "add-note-11",
+        "kind": "button",
+        "label": "Add Note",
+        "index": 10
+      },
+      {
+        "id": "resolve-12",
+        "kind": "button",
+        "label": "Resolve",
+        "index": 11
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "editor-2",
+        "kind": "link",
+        "label": "Editor",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "queues-3",
+        "kind": "link",
+        "label": "Queues",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "workload-4",
+        "kind": "link",
+        "label": "Workload",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "insights-5",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "settings-6",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "help-7",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "screenId": "6a3ef366729f401e9eb1c811702d6ddf",
+    "title": "Agent Workload - SurfaceGate Desk",
+    "componentName": "AgentWorkloadSurfacegateDesk",
+    "file": "src/screens/AgentWorkloadSurfacegateDesk.tsx",
+    "buttons": 13,
+    "inputs": 2,
+    "links": 7,
+    "actions": [
+      {
+        "id": "create-ticket-1",
+        "kind": "button",
+        "label": "Create Ticket",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "ej-elena-jenkins-l2-specialist-over-capacity-act-4",
+        "kind": "button",
+        "label": "EJ Elena Jenkins L2 Specialist Over Capacity Active Load 24 / 20",
+        "index": 3
+      },
+      {
+        "id": "mr-marcus-reed-l1-triage-at-capacity-active-load-5",
+        "kind": "button",
+        "label": "MR Marcus Reed L1 Triage At Capacity Active Load 20 / 20",
+        "index": 4
+      },
+      {
+        "id": "sl-sarah-lin-l2-specialist-available-active-load-6",
+        "kind": "button",
+        "label": "SL Sarah Lin L2 Specialist Available Active Load 12 / 20",
+        "index": 5
+      },
+      {
+        "id": "set-away-status-7",
+        "kind": "button",
+        "label": "Set Away Status",
+        "index": 6
+      },
+      {
+        "id": "bulk-reassign-8",
+        "kind": "button",
+        "label": "Bulk Reassign",
+        "index": 7
+      },
+      {
+        "id": "view-all-24-tickets-9",
+        "kind": "button",
+        "label": "View All 24 Tickets",
+        "index": 8
+      },
+      {
+        "id": "button-10-10",
+        "kind": "button",
+        "label": "Button 10",
+        "index": 9
+      },
+      {
+        "id": "button-11-11",
+        "kind": "button",
+        "label": "Button 11",
+        "index": 10
+      },
+      {
+        "id": "button-12-12",
+        "kind": "button",
+        "label": "Button 12",
+        "index": 11
+      },
+      {
+        "id": "button-13-13",
+        "kind": "button",
+        "label": "Button 13",
+        "index": 12
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "editor-2",
+        "kind": "link",
+        "label": "Editor",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "queues-3",
+        "kind": "link",
+        "label": "Queues",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "workload-4",
+        "kind": "link",
+        "label": "Workload",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "insights-5",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "settings-6",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "help-7",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "screenId": "02ba475959054b2e98e2269a0b6195df",
+    "title": "Queue and Status Management - SurfaceGate Desk",
+    "componentName": "QueueAndStatusManagementSurfacegateDesk",
+    "file": "src/screens/QueueAndStatusManagementSurfacegateDesk.tsx",
+    "buttons": 9,
+    "inputs": 1,
+    "links": 7,
+    "actions": [
+      {
+        "id": "create-ticket-1",
+        "kind": "button",
+        "label": "Create Ticket",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "filter-my-teams-4",
+        "kind": "button",
+        "label": "Filter: My Teams",
+        "index": 3
+      },
+      {
+        "id": "update-status-5",
+        "kind": "button",
+        "label": "Update Status",
+        "index": 4
+      },
+      {
+        "id": "take-ticket-6",
+        "kind": "button",
+        "label": "Take Ticket",
+        "index": 5
+      },
+      {
+        "id": "update-7",
+        "kind": "button",
+        "label": "Update",
+        "index": 6
+      },
+      {
+        "id": "update-status-8",
+        "kind": "button",
+        "label": "Update Status",
+        "index": 7
+      },
+      {
+        "id": "review-9",
+        "kind": "button",
+        "label": "Review",
+        "index": 8
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "editor-2",
+        "kind": "link",
+        "label": "Editor",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "queues-3",
+        "kind": "link",
+        "label": "Queues",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "workload-4",
+        "kind": "link",
+        "label": "Workload",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "insights-5",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "settings-6",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "help-7",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "screenId": "3ef2c3f4eb8840968eb7b8c0f820cd8d",
+    "title": "Insights - SurfaceGate Desk",
+    "componentName": "InsightsSurfacegateDesk",
+    "file": "src/screens/InsightsSurfacegateDesk.tsx",
+    "buttons": 5,
+    "inputs": 1,
+    "links": 7,
+    "actions": [
+      {
+        "id": "create-ticket-1",
+        "kind": "button",
+        "label": "Create Ticket",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "export-summary-4",
+        "kind": "button",
+        "label": "Export Summary",
+        "index": 3
+      },
+      {
+        "id": "create-report-5",
+        "kind": "button",
+        "label": "Create Report",
+        "index": 4
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "editor-2",
+        "kind": "link",
+        "label": "Editor",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "queues-3",
+        "kind": "link",
+        "label": "Queues",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "workload-4",
+        "kind": "link",
+        "label": "Workload",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "insights-5",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "settings-6",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "help-7",
+        "kind": "link",
+        "label": "Help",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  },
+  {
+    "screenId": "a239106462ec44658ecbe0e731ec96b6",
+    "title": "Empty and Error Recovery - SurfaceGate Desk",
+    "componentName": "EmptyAndErrorRecoverySurfacegateDesk",
+    "file": "src/screens/EmptyAndErrorRecoverySurfacegateDesk.tsx",
+    "buttons": 11,
+    "inputs": 1,
+    "links": 8,
+    "actions": [
+      {
+        "id": "button-1-1",
+        "kind": "button",
+        "label": "Button 1",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "button-4-4",
+        "kind": "button",
+        "label": "Button 4",
+        "index": 3
+      },
+      {
+        "id": "create-ticket-5",
+        "kind": "button",
+        "label": "Create Ticket",
+        "index": 4
+      },
+      {
+        "id": "new-ticket-6",
+        "kind": "button",
+        "label": "New Ticket",
+        "index": 5
+      },
+      {
+        "id": "close-7",
+        "kind": "button",
+        "label": "close",
+        "index": 6
+      },
+      {
+        "id": "close-8",
+        "kind": "button",
+        "label": "close",
+        "index": 7
+      },
+      {
+        "id": "clear-filters-9",
+        "kind": "button",
+        "label": "Clear Filters",
+        "index": 8
+      },
+      {
+        "id": "act-retry-load-10",
+        "kind": "button",
+        "label": "ACT_RETRY_LOAD",
+        "index": 9
+      },
+      {
+        "id": "act-create-record-11",
+        "kind": "button",
+        "label": "ACT_CREATE_RECORD",
+        "index": 10
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "editor-2",
+        "kind": "link",
+        "label": "Editor",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "queues-3",
+        "kind": "link",
+        "label": "Queues",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "workload-4",
+        "kind": "link",
+        "label": "Workload",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "insights-5",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "settings-6",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "support-7",
+        "kind": "link",
+        "label": "Support",
+        "href": "#",
+        "index": 6
+      },
+      {
+        "id": "view-sla-guidelines-8",
+        "kind": "link",
+        "label": "View SLA Guidelines",
+        "href": "#",
+        "index": 7
+      }
+    ]
+  },
+  {
+    "screenId": "2c236a414be441d482975231c9188090",
+    "title": "Settings and Preferences - SurfaceGate Desk",
+    "componentName": "SettingsAndPreferencesSurfacegateDesk",
+    "file": "src/screens/SettingsAndPreferencesSurfacegateDesk.tsx",
+    "buttons": 14,
+    "inputs": 7,
+    "links": 7,
+    "actions": [
+      {
+        "id": "button-1-1",
+        "kind": "button",
+        "label": "Button 1",
+        "index": 0
+      },
+      {
+        "id": "button-2-2",
+        "kind": "button",
+        "label": "Button 2",
+        "index": 1
+      },
+      {
+        "id": "button-3-3",
+        "kind": "button",
+        "label": "Button 3",
+        "index": 2
+      },
+      {
+        "id": "button-4-4",
+        "kind": "button",
+        "label": "Button 4",
+        "index": 3
+      },
+      {
+        "id": "new-ticket-5",
+        "kind": "button",
+        "label": "New Ticket",
+        "index": 4
+      },
+      {
+        "id": "act-retry-load-6",
+        "kind": "button",
+        "label": "ACT_RETRY_LOAD",
+        "index": 5
+      },
+      {
+        "id": "act-save-preferences-7",
+        "kind": "button",
+        "label": "ACT_SAVE_PREFERENCES",
+        "index": 6
+      },
+      {
+        "id": "button-8-8",
+        "kind": "button",
+        "label": "Button 8",
+        "index": 7
+      },
+      {
+        "id": "new-filter-9",
+        "kind": "button",
+        "label": "New Filter",
+        "index": 8
+      },
+      {
+        "id": "button-10-10",
+        "kind": "button",
+        "label": "Button 10",
+        "index": 9
+      },
+      {
+        "id": "button-11-11",
+        "kind": "button",
+        "label": "Button 11",
+        "index": 10
+      },
+      {
+        "id": "button-12-12",
+        "kind": "button",
+        "label": "Button 12",
+        "index": 11
+      },
+      {
+        "id": "button-13-13",
+        "kind": "button",
+        "label": "Button 13",
+        "index": 12
+      },
+      {
+        "id": "reset-to-factory-defaults-14",
+        "kind": "button",
+        "label": "Reset to Factory Defaults",
+        "index": 13
+      },
+      {
+        "id": "operations-1",
+        "kind": "link",
+        "label": "Operations",
+        "href": "#",
+        "index": 0
+      },
+      {
+        "id": "editor-2",
+        "kind": "link",
+        "label": "Editor",
+        "href": "#",
+        "index": 1
+      },
+      {
+        "id": "queues-3",
+        "kind": "link",
+        "label": "Queues",
+        "href": "#",
+        "index": 2
+      },
+      {
+        "id": "workload-4",
+        "kind": "link",
+        "label": "Workload",
+        "href": "#",
+        "index": 3
+      },
+      {
+        "id": "insights-5",
+        "kind": "link",
+        "label": "Insights",
+        "href": "#",
+        "index": 4
+      },
+      {
+        "id": "settings-6",
+        "kind": "link",
+        "label": "Settings",
+        "href": "#",
+        "index": 5
+      },
+      {
+        "id": "support-7",
+        "kind": "link",
+        "label": "Support",
+        "href": "#",
+        "index": 6
+      }
+    ]
+  }
+]
