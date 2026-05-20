@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticket Operations - SurfaceGate Desk</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#943700",
+                        "on-secondary-container": "#57657a",
+                        "on-tertiary-fixed": "#360f00",
+                        "secondary-fixed": "#d5e3fc",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-container": "#eceef0",
+                        "on-surface": "#191c1e",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d5e3fc",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#ffede6",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-variant": "#e0e3e5",
+                        "secondary": "#515f74",
+                        "inverse-primary": "#b4c5ff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-high": "#e6e8ea",
+                        "on-background": "#191c1e",
+                        "surface-tint": "#0053db",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "primary-container": "#2563eb",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-container": "#bc4800",
+                        "on-surface-variant": "#434655",
+                        "on-primary-container": "#eeefff",
+                        "surface-dim": "#d8dadc",
+                        "surface": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "primary": "#004ac6",
+                        "outline": "#737686",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "background": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "cell-padding-v": "8px",
+                        "unit": "4px",
+                        "sidebar-width": "240px",
+                        "cell-padding-h": "12px",
+                        "margin-desktop": "24px",
+                        "gutter": "16px",
+                        "topbar-height": "56px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        /* Base styles to enforce design system rules */
+        body {
+            background-color: theme('colors.surface-container-low');
+            color: theme('colors.on-surface');
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom scrollbar for dense tables */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: theme('colors.surface-container-low'); 
+        }
+        ::-webkit-scrollbar-thumb {
+            background: theme('colors.outline-variant'); 
+            border-radius: theme('borderRadius.full');
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: theme('colors.outline'); 
+        }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden antialiased text-body-md font-body-md">
+<!-- SideNavBar Component -->
+<nav class="hidden md:flex flex-col h-screen py-4 w-[240px] bg-surface-container-low border-r border-outline-variant shrink-0 z-20">
+<!-- Header -->
+<div class="px-6 mb-8 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary flex items-center justify-center text-on-primary">
+<span class="material-symbols-outlined text-[18px]">desk</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface leading-tight">SurfaceGate</div>
+<div class="font-label-md text-label-md text-on-secondary-container leading-tight">Service Desk</div>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex-1 flex flex-col gap-1 px-3">
+<!-- Active Tab: Operations -->
+<a class="flex items-center gap-3 px-3 py-2 text-primary border-l-2 border-primary bg-surface transition-all duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="settings_input_component">settings_input_component</span>
+<span class="font-label-md text-label-md uppercase">Operations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container hover:bg-surface-container-high transition-all duration-150 border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="edit_note">edit_note</span>
+<span class="font-label-md text-label-md uppercase">Editor</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container hover:bg-surface-container-high transition-all duration-150 border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="queue_play_next">queue_play_next</span>
+<span class="font-label-md text-label-md uppercase">Queues</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container hover:bg-surface-container-high transition-all duration-150 border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="assessment">assessment</span>
+<span class="font-label-md text-label-md uppercase">Workload</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container hover:bg-surface-container-high transition-all duration-150 border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-label-md text-label-md uppercase">Insights</span>
+</a>
+</div>
+<!-- Footer Tabs -->
+<div class="flex flex-col gap-1 px-3 mt-auto pt-4 border-t border-outline-variant">
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container hover:bg-surface-container-high transition-all duration-150 border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md uppercase">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 text-on-secondary-container hover:bg-surface-container-high transition-all duration-150 border-l-2 border-transparent" href="#">
+<span class="material-symbols-outlined" data-icon="help">help</span>
+<span class="font-label-md text-label-md uppercase">Help</span>
+</a>
+</div>
+</nav>
+<!-- Main Workspace -->
+<div class="flex flex-col flex-1 min-w-0 bg-surface z-10">
+<!-- TopNavBar Component -->
+<header class="w-full h-[56px] flex justify-between items-center px-margin-desktop bg-surface border-b border-outline-variant shrink-0">
+<!-- Left: Search Area -->
+<div class="flex items-center gap-4 flex-1">
+<div class="font-headline-md text-headline-md text-primary font-bold md:hidden">SurfaceGate Desk</div>
+<div class="hidden md:flex items-center relative max-w-md w-full">
+<span class="material-symbols-outlined absolute left-2 text-outline text-[20px]">search</span>
+<input class="w-full h-[32px] pl-9 pr-3 bg-surface-container-low border border-outline-variant rounded text-body-sm font-body-sm text-on-surface focus:border-primary focus:ring-0 transition-colors" placeholder="Search tickets, customers, or internal docs..." type="text"/>
+</div>
+</div>
+<!-- Right: Actions -->
+<div class="flex items-center gap-4">
+<button class="h-[32px] px-4 bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-colors">
+                    Create Ticket
+                </button>
+<div class="flex items-center gap-2 text-on-surface-variant">
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-low rounded transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="w-8 h-8 flex items-center justify-center hover:bg-surface-container-low rounded transition-colors duration-200">
+<span class="material-symbols-outlined" data-icon="account_circle">account_circle</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 flex overflow-hidden">
+<!-- Left Side: Data View -->
+<div class="flex-1 flex flex-col min-w-0 bg-surface">
+<!-- Page Header & Metrics -->
+<div class="p-margin-desktop pb-0 shrink-0">
+<h1 class="font-headline-lg text-headline-lg text-on-surface mb-6">Ticket Operations</h1>
+<!-- Metrics Row -->
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter mb-6">
+<div class="p-4 border border-outline-variant rounded bg-surface">
+<div class="font-label-md text-label-md text-secondary uppercase mb-1">Total Open</div>
+<div class="font-headline-lg text-headline-lg text-primary">3,240</div>
+</div>
+<div class="p-4 border border-outline-variant rounded bg-surface">
+<div class="font-label-md text-label-md text-secondary uppercase mb-1">Unassigned</div>
+<div class="font-headline-lg text-headline-lg text-tertiary">142</div>
+</div>
+<div class="p-4 border border-outline-variant rounded bg-surface">
+<div class="font-label-md text-label-md text-error uppercase mb-1">SLA Breached</div>
+<div class="font-headline-lg text-headline-lg text-error">28</div>
+</div>
+<div class="p-4 border border-outline-variant rounded bg-surface">
+<div class="font-label-md text-label-md text-secondary uppercase mb-1">Avg Resolution</div>
+<div class="font-headline-lg text-headline-lg text-primary">4h 12m</div>
+</div>
+</div>
+<!-- Toolbar -->
+<div class="flex items-center justify-between py-3 border-b border-outline-variant">
+<div class="flex items-center gap-2">
+<button class="h-[32px] px-3 bg-surface-container-lowest border border-outline-variant text-secondary font-label-md text-label-md rounded hover:bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">filter_list</span>
+                                Filter
+                            </button>
+<button class="h-[32px] px-3 bg-surface border border-transparent text-secondary font-label-md text-label-md rounded hover:bg-surface-container-low flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">sort</span>
+                                Sort: Priority
+                            </button>
+</div>
+<div class="flex items-center gap-2 text-label-md font-label-md text-secondary">
+<span>Showing 1-50 of 3,240</span>
+<div class="flex gap-1 ml-2">
+<button class="w-6 h-6 flex items-center justify-center hover:bg-surface-container-low rounded disabled:opacity-50"><span class="material-symbols-outlined text-[16px]">chevron_left</span></button>
+<button class="w-6 h-6 flex items-center justify-center hover:bg-surface-container-low rounded"><span class="material-symbols-outlined text-[16px]">chevron_right</span></button>
+</div>
+</div>
+</div>
+</div>
+<!-- Ticket Table Area -->
+<div class="flex-1 overflow-auto relative">
+<table class="w-full text-left border-collapse min-w-[800px]">
+<thead class="sticky top-0 bg-surface-container-low z-10 border-b border-outline-variant shadow-[0_1px_0_theme(colors.outline-variant)]">
+<tr>
+<th class="py-2 px-4 font-label-md text-label-md text-secondary uppercase w-24">ID</th>
+<th class="py-2 px-4 font-label-md text-label-md text-secondary uppercase">Subject</th>
+<th class="py-2 px-4 font-label-md text-label-md text-secondary uppercase w-28">Status</th>
+<th class="py-2 px-4 font-label-md text-label-md text-secondary uppercase w-32">Priority</th>
+<th class="py-2 px-4 font-label-md text-label-md text-secondary uppercase w-40">Agent</th>
+<th class="py-2 px-4 font-label-md text-label-md text-secondary uppercase w-32">Updated</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<!-- Active Row Simulation -->
+<tr class="hover:bg-surface-container-low bg-surface-container-lowest transition-colors cursor-pointer border-l-2 border-l-primary">
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary">#INC-9824</td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-on-surface font-medium truncate max-w-[300px]">Database latency affecting main cluster rendering queries</td>
+<td class="py-cell-padding-v px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-primary/10 text-primary">Open</span>
+</td>
+<td class="py-cell-padding-v px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-error text-on-error uppercase tracking-wider">Critical</span>
+</td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[10px] font-bold">AS</div>
+                                    Alex Smith
+                                </td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary">10m ago</td>
+</tr>
+<!-- Standard Rows -->
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer border-l-2 border-l-transparent">
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary">#REQ-9823</td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-on-surface truncate max-w-[300px]">Access request for new employee portal deployment pipeline</td>
+<td class="py-cell-padding-v px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-surface-variant text-on-surface-variant">Pending</span>
+</td>
+<td class="py-cell-padding-v px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-tertiary/10 text-tertiary">High</span>
+</td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary">Unassigned</td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary">25m ago</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer border-l-2 border-l-transparent">
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary">#INC-9822</td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-on-surface truncate max-w-[300px]">SSO Login failures reported across EMEA region</td>
+<td class="py-cell-padding-v px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-primary/10 text-primary">Open</span>
+</td>
+<td class="py-cell-padding-v px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-tertiary/10 text-tertiary">High</span>
+</td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[10px] font-bold">JD</div>
+                                    Jane Doe
+                                </td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary">1h ago</td>
+</tr>
+<tr class="hover:bg-surface-container-low transition-colors cursor-pointer border-l-2 border-l-transparent">
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary">#REQ-9821</td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-on-surface truncate max-w-[300px]">Upgrade license tier for marketing team accounts</td>
+<td class="py-cell-padding-v px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-surface-variant text-on-surface-variant">Resolved</span>
+</td>
+<td class="py-cell-padding-v px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-secondary/10 text-secondary">Low</span>
+</td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary flex items-center gap-2">
+<div class="w-5 h-5 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[10px] font-bold">MK</div>
+                                    Mike Ross
+                                </td>
+<td class="py-cell-padding-v px-4 font-body-sm text-body-sm text-secondary">3h ago</td>
+</tr>
+</tbody>
+</table>
+<!-- Error State at Bottom -->
+<div class="py-8 px-4 flex flex-col items-center justify-center border-t border-outline-variant bg-surface-container-lowest">
+<span class="material-symbols-outlined text-[32px] text-outline mb-2">cloud_off</span>
+<p class="font-body-sm text-body-sm text-secondary mb-3">Failed to load older records</p>
+<button class="h-[32px] px-4 bg-surface-container-lowest border border-outline-variant text-secondary font-label-md text-label-md rounded hover:bg-surface-container-low transition-colors">
+                            Retry Connection
+                        </button>
+</div>
+</div>
+</div>
+<!-- Right Side: Preview Pane -->
+<aside class="hidden lg:flex flex-col w-[360px] border-l border-outline-variant bg-surface-container-lowest shrink-0 overflow-y-auto">
+<!-- Preview Header -->
+<div class="p-5 border-b border-outline-variant sticky top-0 bg-surface-container-lowest z-10">
+<div class="flex items-center justify-between mb-3">
+<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase">#INC-9824</span>
+<div class="flex gap-1">
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container-low rounded"><span class="material-symbols-outlined text-[18px]">push_pin</span></button>
+<button class="w-8 h-8 flex items-center justify-center text-secondary hover:bg-surface-container-low rounded"><span class="material-symbols-outlined text-[18px]">more_vert</span></button>
+</div>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface mb-4 leading-snug">Database latency affecting main cluster rendering queries</h2>
+<div class="flex flex-wrap gap-2 mb-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-error text-on-error uppercase tracking-wider">Critical Priority</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-primary/10 text-primary">Open</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-sm font-label-sm text-label-sm bg-surface-variant text-on-surface-variant">Infrastructure</span>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4 border-t border-outline-variant">
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase mb-1">Assignee</div>
+<div class="font-body-sm text-body-sm text-on-surface flex items-center gap-2">
+<div class="w-4 h-4 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center text-[8px] font-bold">AS</div>
+                                Alex Smith
+                            </div>
+</div>
+<div>
+<div class="font-label-sm text-label-sm text-secondary uppercase mb-1">Reporter</div>
+<div class="font-body-sm text-body-sm text-on-surface">System Monitor</div>
+</div>
+</div>
+</div>
+<!-- Preview Body -->
+<div class="p-5 flex-1">
+<div class="mb-6">
+<h3 class="font-label-md text-label-md text-on-surface uppercase mb-2 border-b border-outline-variant pb-1">Description</h3>
+<p class="font-body-sm text-body-sm text-secondary whitespace-pre-wrap leading-relaxed">Automated alert triggered at 08:42 UTC. Read latency on primary db-cluster-01 exceeded 500ms threshold for 3 consecutive polling intervals. Connections are queueing resulting in delayed UI rendering for approximately 15% of active sessions in the US-East region.</p>
+</div>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface uppercase mb-3 border-b border-outline-variant pb-1">Recent Activity</h3>
+<div class="relative pl-4 border-l border-outline-variant space-y-4 ml-2">
+<div class="relative">
+<div class="absolute w-2 h-2 rounded-full bg-primary -left-[21px] top-1.5 border-2 border-surface-container-lowest"></div>
+<div class="font-label-sm text-label-sm text-secondary mb-0.5">10m ago • Alex Smith</div>
+<div class="font-body-sm text-body-sm text-on-surface">Status changed to <span class="font-medium">In Progress</span>. Investigating query logs on node 3.</div>
+</div>
+<div class="relative">
+<div class="absolute w-2 h-2 rounded-full bg-outline-variant -left-[21px] top-1.5 border-2 border-surface-container-lowest"></div>
+<div class="font-label-sm text-label-sm text-secondary mb-0.5">15m ago • System</div>
+<div class="font-body-sm text-body-sm text-on-surface">Ticket automatically routed to Database Ops queue based on alert tags.</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Preview Footer Actions -->
+<div class="p-4 border-t border-outline-variant bg-surface sticky bottom-0">
+<div class="flex gap-2">
+<button class="flex-1 h-[32px] bg-primary text-on-primary rounded font-label-md text-label-md hover:bg-on-primary-fixed-variant transition-colors">Add Note</button>
+<button class="flex-1 h-[32px] bg-surface-container-lowest border border-outline-variant text-secondary font-label-md text-label-md rounded hover:bg-surface-container-low transition-colors">Resolve</button>
+</div>
+</div>
+</aside>
+</main>
+</div>
+</body></html>

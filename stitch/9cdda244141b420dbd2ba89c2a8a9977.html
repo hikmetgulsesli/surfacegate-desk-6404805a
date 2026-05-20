@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Ticket Editor - SurfaceGate Desk</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary": "#943700",
+                        "on-secondary-container": "#57657a",
+                        "on-tertiary-fixed": "#360f00",
+                        "secondary-fixed": "#d5e3fc",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-container": "#eceef0",
+                        "on-surface": "#191c1e",
+                        "on-error": "#ffffff",
+                        "secondary-container": "#d5e3fc",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "on-tertiary-container": "#ffede6",
+                        "on-primary": "#ffffff",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#dbe1ff",
+                        "surface-variant": "#e0e3e5",
+                        "secondary": "#515f74",
+                        "inverse-primary": "#b4c5ff",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-high": "#e6e8ea",
+                        "on-background": "#191c1e",
+                        "surface-tint": "#0053db",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "primary-container": "#2563eb",
+                        "surface-container-low": "#f2f4f6",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "on-primary-fixed": "#00174b",
+                        "tertiary-container": "#bc4800",
+                        "on-surface-variant": "#434655",
+                        "on-primary-container": "#eeefff",
+                        "surface-dim": "#d8dadc",
+                        "surface": "#f7f9fb",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "primary": "#004ac6",
+                        "outline": "#737686",
+                        "on-secondary": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "tertiary-fixed": "#ffdbcd",
+                        "on-tertiary": "#ffffff",
+                        "inverse-surface": "#2d3133",
+                        "background": "#f7f9fb"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "cell-padding-v": "8px",
+                        "unit": "4px",
+                        "sidebar-width": "240px",
+                        "cell-padding-h": "12px",
+                        "margin-desktop": "24px",
+                        "gutter": "16px",
+                        "topbar-height": "56px"
+                    },
+                    "fontFamily": {
+                        "label-md": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-sm": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "headline-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500" }],
+                        "headline-lg": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-sm": ["13px", { "lineHeight": "18px", "fontWeight": "400" }],
+                        "label-sm": ["11px", { "lineHeight": "14px", "fontWeight": "600" }],
+                        "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }],
+                        "headline-md": ["16px", { "lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface flex h-screen overflow-hidden antialiased">
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col h-full py-4 bg-surface-container-low dark:bg-on-surface w-[240px] border-r border-outline-variant dark:border-outline shrink-0">
+<!-- Header -->
+<div class="px-4 mb-6 flex items-center gap-3">
+<div class="w-8 h-8 rounded bg-primary text-on-primary flex items-center justify-center font-headline-md font-bold">
+                S
+            </div>
+<div>
+<div class="font-headline-md text-headline-md font-bold text-on-surface">SurfaceGate</div>
+<div class="font-label-md text-label-md text-on-surface-variant">Service Desk</div>
+</div>
+</div>
+<!-- Main Tabs -->
+<div class="flex flex-col gap-1 px-2 flex-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-container dark:text-surface-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">settings_input_component</span>
+                Operations
+            </a>
+<!-- Active Tab: Editor -->
+<a class="flex items-center gap-3 px-3 py-2 rounded text-primary dark:text-primary-fixed-dim border-l-2 border-primary bg-surface dark:bg-surface-container-highest font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">edit_note</span>
+                Editor
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-container dark:text-surface-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">queue_play_next</span>
+                Queues
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-container dark:text-surface-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">assessment</span>
+                Workload
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-container dark:text-surface-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">insights</span>
+                Insights
+            </a>
+</div>
+<!-- Footer Tabs -->
+<div class="flex flex-col gap-1 px-2 mt-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-container dark:text-surface-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">settings</span>
+                Settings
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-secondary-container dark:text-surface-variant font-label-md text-label-md hover:bg-surface-container-high dark:hover:bg-surface-container-highest transition-all duration-150" href="#">
+<span class="material-symbols-outlined text-[18px]">help</span>
+                Help
+            </a>
+</div>
+</nav>
+<!-- Main Workspace -->
+<div class="flex-1 flex flex-col h-screen overflow-hidden bg-background">
+<!-- TopNavBar -->
+<header class="w-full h-[56px] border-b border-outline-variant dark:border-outline bg-surface dark:bg-on-surface flex justify-between items-center px-margin-desktop shrink-0 transition-colors duration-200">
+<!-- Left: Search -->
+<div class="flex items-center gap-4 flex-1">
+<div class="relative w-64 hidden sm:block">
+<span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+<input class="w-full pl-8 pr-3 py-1.5 bg-surface-container-low border border-outline-variant rounded text-on-surface font-body-sm text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all duration-200" placeholder="Search..." type="text"/>
+</div>
+</div>
+<!-- Right: Actions & Profile -->
+<div class="flex items-center gap-3">
+<button class="bg-primary text-on-primary font-label-md text-label-md h-8 px-4 rounded hover:bg-on-primary-fixed-variant transition-colors duration-200 flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px]">add</span>
+                    Create Ticket
+                </button>
+<div class="w-px h-6 bg-outline-variant mx-1"></div>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="w-8 h-8 rounded flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low dark:hover:bg-surface-container-highest transition-colors duration-200">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- Editor Canvas -->
+<main class="flex-1 overflow-y-auto p-margin-desktop bg-background">
+<div class="max-w-6xl mx-auto flex flex-col gap-gutter">
+<!-- Editor Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-outline-variant">
+<div class="flex items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Ticket Editor</h1>
+<span class="px-2 py-1 bg-tertiary-container text-on-tertiary-container rounded font-label-sm text-label-sm flex items-center gap-1 border border-tertiary/20">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                            Unsaved changes
+                        </span>
+</div>
+<div class="flex items-center gap-3">
+<button class="h-10 px-4 bg-surface-container-lowest border border-outline-variant text-on-surface-variant font-label-md text-label-md rounded hover:bg-surface-container-low hover:text-on-surface transition-colors">
+                            Cancel
+                        </button>
+<button class="h-10 px-6 bg-primary text-on-primary font-label-md text-label-md rounded hover:bg-primary-container transition-colors shadow-sm">
+                            Save Changes
+                        </button>
+</div>
+</div>
+<!-- Form Layout (Asymmetric Bento style) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter mt-2">
+<!-- Left Column: Primary Content -->
+<div class="lg:col-span-8 flex flex-col gap-gutter">
+<!-- Main Fields Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-6 flex flex-col gap-6 relative overflow-hidden">
+<!-- Subtle decorative left border accent for active area -->
+<div class="absolute left-0 top-0 bottom-0 w-0.5 bg-primary"></div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface flex items-center gap-1" for="ticket-title">
+                                    Ticket Title <span aria-label="Required" class="text-error">*</span>
+</label>
+<input class="w-full px-3 py-2 bg-surface-container-lowest border border-outline-variant rounded text-on-surface font-body-md text-body-md focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none transition-all placeholder:text-on-surface-variant/50" id="ticket-title" placeholder="Enter a descriptive title" type="text" value="System outage reported in US-East region"/>
+</div>
+<div class="flex flex-col gap-1.5">
+<div class="flex justify-between items-end">
+<label class="font-label-md text-label-md text-on-surface flex items-center gap-1" for="ticket-description">
+                                        Description <span aria-label="Required" class="text-error">*</span>
+</label>
+<span class="font-label-sm text-label-sm text-error flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">error</span>
+                                        Validation Error
+                                    </span>
+</div>
+<!-- Invalid state styling -->
+<textarea class="w-full px-3 py-2 bg-error-container/10 border-error rounded text-on-surface font-body-md text-body-md focus:border-error focus:ring-1 focus:ring-error focus:outline-none transition-all resize-y" id="ticket-description" rows="12">Crash.</textarea>
+<p class="font-body-sm text-body-sm text-error mt-1 flex items-center gap-1">
+                                    Description is too short. Please provide at least 20 characters detailing the issue.
+                                </p>
+</div>
+<!-- Attachments Area (Optional representation) -->
+<div class="border border-dashed border-outline-variant rounded p-4 flex flex-col items-center justify-center gap-2 bg-surface-container-low/50 cursor-pointer hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-outline text-[24px]">cloud_upload</span>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Drag and drop files here, or click to select files</div>
+<div class="font-label-sm text-label-sm text-outline">Optional</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Metadata & Settings -->
+<div class="lg:col-span-4 flex flex-col gap-gutter">
+<!-- Properties Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-5 flex flex-col gap-5">
+<h3 class="font-headline-md text-headline-md text-on-surface border-b border-outline-variant pb-2">Properties</h3>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant" for="category">Category</label>
+<div class="relative">
+<select class="w-full px-3 py-2 bg-surface border border-outline-variant rounded text-on-surface font-body-md text-body-md appearance-none focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" id="category">
+<option value="">Select Category</option>
+<option selected="" value="infrastructure">Infrastructure</option>
+<option value="software">Software Bug</option>
+<option value="access">Access Request</option>
+<option value="hardware">Hardware Issue</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[20px]">arrow_drop_down</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant" for="priority">Priority</label>
+<div class="relative">
+<select class="w-full px-3 py-2 bg-surface border border-outline-variant rounded text-on-surface font-body-md text-body-md appearance-none focus:border-primary focus:ring-1 focus:ring-primary focus:outline-none" id="priority">
+<option value="p1">P1 - Critical</option>
+<option selected="" value="p2">P2 - High</option>
+<option value="p3">P3 - Medium</option>
+<option value="p4">P4 - Low</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-on-surface-variant pointer-events-none text-[20px]">arrow_drop_down</span>
+</div>
+</div>
+<div class="flex flex-col gap-1.5">
+<label class="font-label-md text-label-md text-on-surface-variant" for="assignee">Assignee</label>
+<div class="relative flex items-center border border-outline-variant rounded bg-surface px-2 focus-within:border-primary focus-within:ring-1 focus-within:ring-primary transition-all">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-label-sm text-label-sm shrink-0">
+                                        JD
+                                    </div>
+<input class="w-full px-2 py-2 bg-transparent border-none text-on-surface font-body-md text-body-md focus:outline-none focus:ring-0" id="assignee" type="text" value="John Doe"/>
+<span class="material-symbols-outlined text-on-surface-variant text-[18px] cursor-pointer hover:text-on-surface">close</span>
+</div>
+</div>
+</div>
+<!-- Secondary Actions Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded p-4 flex flex-col gap-3">
+<button class="w-full h-8 flex items-center justify-center gap-2 text-primary font-label-md text-label-md hover:bg-surface-container-low rounded transition-colors">
+<span class="material-symbols-outlined text-[18px]">history</span>
+                                Recover Draft
+                            </button>
+<button class="w-full h-8 flex items-center justify-center gap-2 text-error font-label-md text-label-md hover:bg-error-container/20 rounded transition-colors">
+<span class="material-symbols-outlined text-[18px]">delete</span>
+                                Discard Ticket
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

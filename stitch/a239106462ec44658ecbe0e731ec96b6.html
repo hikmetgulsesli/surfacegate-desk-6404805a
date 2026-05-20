@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>SurfaceGate Desk - Empty State</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-primary": "#b4c5ff",
+                        "surface-dim": "#d8dadc",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c3c6d7",
+                        "surface-container-highest": "#e0e3e5",
+                        "outline": "#737686",
+                        "on-primary-fixed": "#00174b",
+                        "on-background": "#191c1e",
+                        "on-secondary-fixed-variant": "#3a485b",
+                        "primary": "#004ac6",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#d5e3fc",
+                        "primary-fixed-dim": "#b4c5ff",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#ffede6",
+                        "on-tertiary-fixed-variant": "#7d2d00",
+                        "surface-container": "#eceef0",
+                        "secondary": "#515f74",
+                        "on-surface": "#191c1e",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container-high": "#e6e8ea",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-fixed": "#360f00",
+                        "inverse-surface": "#2d3133",
+                        "surface-tint": "#0053db",
+                        "secondary-container": "#d5e3fc",
+                        "primary-container": "#2563eb",
+                        "tertiary-fixed": "#ffdbcd",
+                        "error": "#ba1a1a",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface-variant": "#434655",
+                        "surface-bright": "#f7f9fb",
+                        "secondary-fixed-dim": "#b9c7df",
+                        "tertiary-fixed-dim": "#ffb596",
+                        "tertiary": "#943700",
+                        "on-primary-fixed-variant": "#003ea8",
+                        "tertiary-container": "#bc4800",
+                        "on-secondary-fixed": "#0d1c2e",
+                        "on-error-container": "#93000a",
+                        "on-primary-container": "#eeefff",
+                        "primary-fixed": "#dbe1ff",
+                        "on-tertiary": "#ffffff",
+                        "on-secondary-container": "#57657a",
+                        "error-container": "#ffdad6",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-primary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sidebar-width": "240px",
+                        "gutter": "16px",
+                        "cell-padding-v": "8px",
+                        "unit": "4px",
+                        "cell-padding-h": "12px",
+                        "topbar-height": "56px",
+                        "margin-desktop": "24px"
+                    },
+                    "fontFamily": {
+                        "body-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "headline-md": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "body-md": ["Inter"]
+                    },
+                    "fontSize": {
+                        "body-sm": ["13px", {"lineHeight": "18px", "fontWeight": "400"}],
+                        "label-md": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                        "headline-md": ["16px", {"lineHeight": "24px", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "label-sm": ["11px", {"lineHeight": "14px", "fontWeight": "600"}],
+                        "headline-lg": ["20px", {"lineHeight": "28px", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["14px", {"lineHeight": "20px", "fontWeight": "400"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body { background-color: #F1F5F9; }
+    </style>
+</head>
+<body class="font-body-md text-on-surface antialiased overflow-hidden">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant fixed top-0 left-0 w-full z-50 flex items-center h-topbar-height px-gutter justify-between gap-4">
+<div class="flex items-center gap-4">
+<div class="md:hidden">
+<button class="p-2 rounded-DEFAULT hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+<div class="text-headline-lg font-headline-lg font-bold text-primary">
+                SurfaceGate Desk
+            </div>
+<div class="hidden md:flex relative w-64 ml-4">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full h-8 pl-10 pr-3 rounded-DEFAULT border border-outline-variant bg-surface-container-lowest text-body-sm font-body-sm focus:border-primary focus:ring-0 transition-colors" placeholder="Search tickets..." type="text"/>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-DEFAULT hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 rounded-DEFAULT hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 rounded-DEFAULT hover:bg-surface-container text-on-surface-variant transition-colors">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+<button class="h-8 px-4 bg-primary text-on-primary rounded-DEFAULT text-body-sm font-body-sm font-medium hover:bg-primary-container transition-colors hidden md:block ml-2">
+                Create Ticket
+            </button>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-surface-container border-r border-outline-variant fixed left-0 top-0 h-full w-sidebar-width z-40 flex flex-col py-4 px-2 pt-[calc(56px+16px)] hidden md:flex">
+<div class="flex flex-col gap-1 flex-grow">
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">confirmation_number</span>
+<span class="text-body-sm font-body-sm">Operations</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">add_box</span>
+<span class="text-body-sm font-body-sm">Editor</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT bg-secondary-container text-on-secondary-container border-l-4 border-primary scale-[0.98] duration-150" href="#">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+<span class="text-body-sm font-body-sm font-medium">Queues</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">group_work</span>
+<span class="text-body-sm font-body-sm">Workload</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] group-hover:text-primary">analytics</span>
+<span class="text-body-sm font-body-sm">Insights</span>
+</a>
+</div>
+<div class="mt-auto flex flex-col gap-1 border-t border-outline-variant pt-4">
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span class="text-body-sm font-body-sm">Settings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-DEFAULT text-on-surface-variant hover:bg-surface-container-highest transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span class="text-body-sm font-body-sm">Support</span>
+</a>
+<div class="mt-4 px-3 flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center font-bold text-label-md">
+                    AG
+                </div>
+<div class="flex flex-col">
+<span class="text-label-sm font-label-sm text-on-surface">Agent Profile</span>
+<span class="text-[10px] text-on-surface-variant">Service Desk</span>
+</div>
+</div>
+<button class="mt-4 mx-3 h-8 bg-primary text-on-primary rounded-DEFAULT text-body-sm font-body-sm font-medium hover:bg-primary-container transition-colors md:hidden">
+                New Ticket
+            </button>
+</div>
+</nav>
+<!-- Main Workspace -->
+<main class="md:ml-sidebar-width pt-topbar-height h-screen flex flex-col p-margin-desktop overflow-y-auto">
+<!-- Breadcrumbs / Context -->
+<div class="mb-6 flex items-center gap-2 text-body-sm font-body-sm text-on-surface-variant">
+<span>Queues</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="font-medium text-on-surface">High Priority SLA</span>
+</div>
+<!-- Filter Bar (Mock) -->
+<div class="bg-surface-container-lowest border border-outline-variant p-2 rounded-DEFAULT mb-4 flex items-center gap-3">
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container rounded-DEFAULT border border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface-variant">Status:</span>
+<span class="text-body-sm font-body-sm text-on-surface">Open</span>
+<button class="material-symbols-outlined text-[16px] text-on-surface-variant hover:text-on-surface ml-1">close</button>
+</div>
+<div class="flex items-center gap-2 px-3 py-1 bg-surface-container rounded-DEFAULT border border-outline-variant">
+<span class="text-label-md font-label-md text-on-surface-variant">Assignee:</span>
+<span class="text-body-sm font-body-sm text-on-surface">Me</span>
+<button class="material-symbols-outlined text-[16px] text-on-surface-variant hover:text-on-surface ml-1">close</button>
+</div>
+<div class="h-6 w-px bg-outline-variant mx-2"></div>
+<button class="text-body-sm font-body-sm text-primary hover:underline">Clear Filters</button>
+</div>
+<!-- Empty State Container -->
+<div class="flex-grow flex items-center justify-center">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-lg p-12 max-w-md w-full text-center shadow-sm">
+<div class="w-24 h-24 bg-surface-container-highest rounded-full flex items-center justify-center mx-auto mb-6">
+<span class="material-symbols-outlined text-[48px] text-on-surface-variant" style="font-variation-settings: 'FILL' 1;">inbox</span>
+</div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface mb-2">No tickets match your filters</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mb-8 px-4">
+                    There are currently no open tickets assigned to you in the High Priority SLA queue. Adjust your filters or wait for new assignments.
+                </p>
+<div class="flex flex-col gap-3">
+<button class="w-full h-10 bg-primary text-on-primary rounded-DEFAULT text-body-sm font-body-sm font-medium hover:bg-primary-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">refresh</span>
+                        ACT_RETRY_LOAD
+                    </button>
+<button class="w-full h-10 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded-DEFAULT text-body-sm font-body-sm font-medium hover:bg-surface-container transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        ACT_CREATE_RECORD
+                    </button>
+</div>
+<div class="mt-6 pt-6 border-t border-outline-variant">
+<p class="text-label-md font-label-md text-on-surface-variant mb-2">Need help?</p>
+<a class="text-body-sm font-body-sm text-primary hover:underline" href="#">View SLA Guidelines</a>
+</div>
+</div>
+</div>
+</main>
+</body></html>

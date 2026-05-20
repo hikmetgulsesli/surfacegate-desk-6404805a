@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Settings &amp; Preferences - SurfaceGate Desk</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "inverse-primary": "#b4c5ff",
+                      "surface-dim": "#d8dadc",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c3c6d7",
+                      "surface-container-highest": "#e0e3e5",
+                      "outline": "#737686",
+                      "on-primary-fixed": "#00174b",
+                      "on-background": "#191c1e",
+                      "on-secondary-fixed-variant": "#3a485b",
+                      "primary": "#004ac6",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#d5e3fc",
+                      "primary-fixed-dim": "#b4c5ff",
+                      "background": "#f7f9fb",
+                      "on-tertiary-container": "#ffede6",
+                      "on-tertiary-fixed-variant": "#7d2d00",
+                      "surface-container": "#eceef0",
+                      "secondary": "#515f74",
+                      "on-surface": "#191c1e",
+                      "surface-variant": "#e0e3e5",
+                      "surface-container-high": "#e6e8ea",
+                      "surface": "#f7f9fb",
+                      "on-tertiary-fixed": "#360f00",
+                      "inverse-surface": "#2d3133",
+                      "surface-tint": "#0053db",
+                      "secondary-container": "#d5e3fc",
+                      "primary-container": "#2563eb",
+                      "tertiary-fixed": "#ffdbcd",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#434655",
+                      "surface-bright": "#f7f9fb",
+                      "secondary-fixed-dim": "#b9c7df",
+                      "tertiary-fixed-dim": "#ffb596",
+                      "tertiary": "#943700",
+                      "on-primary-fixed-variant": "#003ea8",
+                      "tertiary-container": "#bc4800",
+                      "on-secondary-fixed": "#0d1c2e",
+                      "on-error-container": "#93000a",
+                      "on-primary-container": "#eeefff",
+                      "primary-fixed": "#dbe1ff",
+                      "on-tertiary": "#ffffff",
+                      "on-secondary-container": "#57657a",
+                      "error-container": "#ffdad6",
+                      "inverse-on-surface": "#eff1f3",
+                      "on-primary": "#ffffff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sidebar-width": "240px",
+                      "gutter": "16px",
+                      "cell-padding-v": "8px",
+                      "unit": "4px",
+                      "cell-padding-h": "12px",
+                      "topbar-height": "56px",
+                      "margin-desktop": "24px"
+              },
+              "fontFamily": {
+                      "body-sm": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "label-sm": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "body-sm": [
+                              "13px",
+                              {
+                                      "lineHeight": "18px",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "16px",
+                                      "letterSpacing": "0.05em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "24px",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label-sm": [
+                              "11px",
+                              {
+                                      "lineHeight": "14px",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-lg": [
+                              "20px",
+                              {
+                                      "lineHeight": "28px",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "20px",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        body {
+            background-color: #F1F5F9; /* Level 0 Background */
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #004ac6;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #004ac6;
+        }
+        .toggle-checkbox:checked + .toggle-label:after {
+            transform: translateX(100%);
+            border-color: white;
+        }
+        .toggle-label {
+            width: 36px;
+            height: 20px;
+            background-color: #e0e3e5;
+            border-radius: 9999px;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .toggle-label:after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            width: 16px;
+            height: 16px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.2s ease-in-out;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="text-on-surface font-body-sm bg-surface-container-low min-h-screen flex">
+<!-- TopAppBar -->
+<header class="bg-surface-container-lowest border-b border-outline-variant fixed top-0 left-0 w-full z-50 flex items-center h-topbar-height px-gutter justify-between gap-4">
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Toggle (hidden on desktop) -->
+<button class="md:hidden p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<h1 class="text-headline-lg font-headline-lg font-bold text-primary tracking-tight">SurfaceGate Desk</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full relative">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-1 right-1 w-2 h-2 bg-error rounded-full"></span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+<button class="p-2 text-on-surface-variant hover:bg-surface-container transition-colors rounded-full ml-2">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+</header>
+<!-- SideNavBar -->
+<nav class="bg-surface-container border-r border-outline-variant fixed left-0 top-0 h-full w-sidebar-width z-40 flex flex-col py-4 px-2 hidden md:flex pt-[72px]">
+<div class="px-3 mb-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary font-bold">
+                    AG
+                </div>
+<div>
+<div class="text-label-md font-label-md text-on-surface-variant">Agent Profile</div>
+<div class="text-headline-md font-headline-md font-black text-on-surface">SurfaceGate</div>
+<div class="text-label-sm font-label-sm text-outline">Service Desk</div>
+</div>
+</div>
+<button class="w-full bg-primary text-on-primary h-10 rounded text-label-md font-label-md hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                New Ticket
+            </button>
+</div>
+<div class="flex-1 overflow-y-auto">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-all text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">confirmation_number</span>
+                        Operations
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-all text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">add_box</span>
+                        Editor
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-all text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">format_list_bulleted</span>
+                        Queues
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-all text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">group_work</span>
+                        Workload
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-all text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+                        Insights
+                    </a>
+</li>
+</ul>
+</div>
+<div class="mt-auto pt-4 border-t border-outline-variant">
+<ul class="space-y-1">
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded bg-secondary-container text-on-secondary-container border-l-4 border-primary scale-[0.98] duration-150 text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">settings</span>
+                        Settings
+                    </a>
+</li>
+<li>
+<a class="flex items-center gap-3 px-3 py-2 rounded text-on-surface-variant hover:bg-surface-container-high transition-all text-label-md font-label-md" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+                        Support
+                    </a>
+</li>
+</ul>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="flex-1 ml-0 md:ml-sidebar-width pt-topbar-height px-gutter md:px-margin-desktop py-6">
+<!-- Header & Success Message -->
+<div class="max-w-4xl mx-auto mb-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="text-headline-lg font-headline-lg text-on-surface">Settings &amp; Preferences</h2>
+<p class="text-body-md font-body-md text-on-surface-variant mt-1">Manage your workspace configuration and view defaults.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="h-10 px-4 bg-surface-container-lowest border border-outline-variant text-on-surface-variant rounded text-label-md font-label-md hover:bg-surface-container transition-colors">
+                    ACT_RETRY_LOAD
+                </button>
+<button class="h-10 px-4 bg-primary text-on-primary rounded text-label-md font-label-md hover:opacity-90 transition-opacity flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">save</span>
+                    ACT_SAVE_PREFERENCES
+                </button>
+</div>
+</div>
+<!-- Success Indicator (Hidden by default, shown for demonstration) -->
+<div class="max-w-4xl mx-auto mb-6 bg-surface-container-lowest border border-[#10B981] rounded p-4 flex items-center gap-3">
+<span class="material-symbols-outlined text-[#10B981]">check_circle</span>
+<span class="text-body-md font-body-md text-on-surface">Preferences saved successfully.</span>
+<button class="ml-auto text-outline hover:text-on-surface">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<div class="max-w-4xl mx-auto space-y-6">
+<!-- Section: Default Views -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded p-6">
+<div class="mb-5 border-b border-outline-variant pb-4">
+<h3 class="text-headline-md font-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">home</span>
+                        Default Views
+                    </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Set the landing page you see when you log in.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<label class="flex flex-col gap-2 p-4 border border-outline-variant rounded cursor-pointer hover:bg-surface-container-low transition-colors relative">
+<input checked="" class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4 border-outline-variant" name="default_view" type="radio"/>
+<span class="material-symbols-outlined text-primary text-[24px]">confirmation_number</span>
+<span class="text-label-md font-label-md text-on-surface">Operations</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Active ticket monitoring</span>
+</label>
+<label class="flex flex-col gap-2 p-4 border border-outline-variant rounded cursor-pointer hover:bg-surface-container-low transition-colors relative">
+<input class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4 border-outline-variant" name="default_view" type="radio"/>
+<span class="material-symbols-outlined text-outline text-[24px]">format_list_bulleted</span>
+<span class="text-label-md font-label-md text-on-surface">Queues</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Team inbox overview</span>
+</label>
+<label class="flex flex-col gap-2 p-4 border border-outline-variant rounded cursor-pointer hover:bg-surface-container-low transition-colors relative">
+<input class="absolute top-4 right-4 text-primary focus:ring-primary h-4 w-4 border-outline-variant" name="default_view" type="radio"/>
+<span class="material-symbols-outlined text-outline text-[24px]">group_work</span>
+<span class="text-label-md font-label-md text-on-surface">Workload</span>
+<span class="text-body-sm font-body-sm text-on-surface-variant">Resource allocation</span>
+</label>
+</div>
+</section>
+<!-- Section: Workflow Preferences -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded p-6">
+<div class="mb-5 border-b border-outline-variant pb-4">
+<h3 class="text-headline-md font-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">tune</span>
+                        Workflow Preferences
+                    </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Customize how data is displayed and when you are alerted.</p>
+</div>
+<div class="space-y-6">
+<!-- Density -->
+<div>
+<label class="text-label-md font-label-md text-on-surface block mb-2">Data Table Density</label>
+<div class="flex items-center gap-4">
+<label class="flex items-center gap-2 cursor-pointer">
+<input class="text-primary focus:ring-primary h-4 w-4 border-outline-variant" name="density" type="radio"/>
+<span class="text-body-md font-body-md text-on-surface">Relaxed</span>
+</label>
+<label class="flex items-center gap-2 cursor-pointer">
+<input checked="" class="text-primary focus:ring-primary h-4 w-4 border-outline-variant" name="density" type="radio"/>
+<span class="text-body-md font-body-md text-on-surface">Compact (Recommended)</span>
+</label>
+</div>
+</div>
+<div class="border-t border-outline-variant pt-6">
+<div class="flex items-center justify-between mb-4">
+<div>
+<div class="text-label-md font-label-md text-on-surface">In-App Notifications</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Receive toast alerts for SLA breaches.</div>
+</div>
+<div class="relative inline-block w-9 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle1" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-variant cursor-pointer" for="toggle1"></label>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<div class="text-label-md font-label-md text-on-surface">Email Summaries</div>
+<div class="text-body-sm font-body-sm text-on-surface-variant">Daily digest of unassigned high-priority tickets.</div>
+</div>
+<div class="relative inline-block w-9 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-4 h-4 rounded-full bg-white border-4 appearance-none cursor-pointer" id="toggle2" name="toggle" type="checkbox"/>
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-variant cursor-pointer" for="toggle2"></label>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: Saved Filters -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded p-6">
+<div class="mb-5 border-b border-outline-variant pb-4 flex justify-between items-center">
+<div>
+<h3 class="text-headline-md font-headline-md text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-outline">filter_list</span>
+                            Saved Filters
+                        </h3>
+<p class="text-body-sm font-body-sm text-on-surface-variant mt-1">Manage your custom queue views.</p>
+</div>
+<button class="text-primary text-label-md font-label-md hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                        New Filter
+                    </button>
+</div>
+<div class="border border-outline-variant rounded overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-outline-variant">
+<th class="p-cell-padding-v px-cell-padding-h text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Filter Name</th>
+<th class="p-cell-padding-v px-cell-padding-h text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider">Criteria Summary</th>
+<th class="p-cell-padding-v px-cell-padding-h text-label-sm font-label-sm text-on-surface-variant uppercase tracking-wider text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="text-body-sm font-body-sm">
+<tr class="border-b border-outline-variant hover:bg-surface-bright transition-colors group">
+<td class="p-cell-padding-v px-cell-padding-h font-medium text-on-surface border-l-2 border-transparent">Critical Unassigned</td>
+<td class="p-cell-padding-v px-cell-padding-h text-on-surface-variant">Priority: High AND Status: Open AND Assignee: None</td>
+<td class="p-cell-padding-v px-cell-padding-h text-right">
+<button class="text-outline hover:text-primary p-1"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="text-outline hover:text-error p-1"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</td>
+</tr>
+<tr class="hover:bg-surface-bright transition-colors group">
+<td class="p-cell-padding-v px-cell-padding-h font-medium text-on-surface border-l-2 border-transparent">My VIP Tickets</td>
+<td class="p-cell-padding-v px-cell-padding-h text-on-surface-variant">Assignee: Me AND Customer Tier: Enterprise</td>
+<td class="p-cell-padding-v px-cell-padding-h text-right">
+<button class="text-outline hover:text-primary p-1"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+<button class="text-outline hover:text-error p-1"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section: Reset Controls -->
+<section class="bg-[#FFF5F5] border border-[#FECACA] rounded p-6">
+<div class="flex items-start gap-4">
+<span class="material-symbols-outlined text-[#DC2626] mt-1">warning</span>
+<div>
+<h3 class="text-headline-md font-headline-md text-[#991B1B]">Reset Controls</h3>
+<p class="text-body-sm font-body-sm text-[#7F1D1D] mt-1 mb-4">Restore all settings to their factory defaults. This action cannot be undone and will remove all custom saved filters.</p>
+<button class="h-8 px-3 border border-[#DC2626] text-[#DC2626] rounded text-label-md font-label-md hover:bg-[#FEE2E2] transition-colors">
+                             Reset to Factory Defaults
+                         </button>
+</div>
+</div>
+</section>
+</div>
+</main>
+</body></html>
