@@ -64,6 +64,13 @@ function PersistenceStatus() {
 function AppShell() {
   const { state, actions } = useAppContext();
   const record = (label: string) => () => actions.recordAction(label);
+  const selectedAgentId = state.agents.some((agent) => agent.id === state.selectedRecord) ? state.selectedRecord : null;
+  const busiestAgent = [...state.agents]
+    .filter((agent) => agent.status === 'over-capacity' || agent.status === 'at-capacity')
+    .sort((left, right) => right.activeLoad - left.activeLoad)[0];
+  const availableAgent = [...state.agents]
+    .filter((agent) => agent.status === 'available')
+    .sort((left, right) => left.activeLoad - right.activeLoad)[0];
   const sharedNavigation = {
     'operations-1': () => actions.navigate('operations'),
     'editor-2': () => actions.navigate('editor'),
@@ -127,7 +134,7 @@ function AppShell() {
               'take-ticket-6': actions.takeTicket,
               'update-7': actions.updateStatus,
               'update-status-8': actions.updateStatus,
-              'review-9': () => actions.selectRecord(state.selectedTicketId),
+              'review-9': () => actions.selectRecord(state.selectedRecord),
               'help-7': () => actions.navigate('support'),
             } satisfies Partial<Record<QueueAndStatusManagementSurfacegateDeskActionId, () => void>>
           }
@@ -144,8 +151,12 @@ function AppShell() {
               'ej-elena-jenkins-l2-specialist-over-capacity-act-4': () => actions.selectRecord('ej'),
               'mr-marcus-reed-l1-triage-at-capacity-active-load-5': () => actions.selectRecord('mr'),
               'sl-sarah-lin-l2-specialist-available-active-load-6': () => actions.selectRecord('sl'),
-              'set-away-status-7': actions.setAwayStatus,
-              'bulk-reassign-8': actions.bulkReassign,
+              'set-away-status-7': () =>
+                selectedAgentId ? actions.setAwayStatus(selectedAgentId) : actions.recordAction('Select an agent before setting away status'),
+              'bulk-reassign-8': () =>
+                busiestAgent && availableAgent
+                  ? actions.bulkReassign(busiestAgent.id, availableAgent.id)
+                  : actions.recordAction('No eligible workload reassignment available'),
               'view-all-24-tickets-9': () => actions.navigate('operations'),
               'button-10-10': record('Opened workload action 10'),
               'button-11-11': record('Opened workload action 11'),
@@ -175,6 +186,7 @@ function AppShell() {
         <SettingsAndPreferencesSurfacegateDesk
           actions={
             {
+              ...sharedNavigation,
               'button-1-1': record('Opened settings utility 1'),
               'button-2-2': record('Opened settings utility 2'),
               'button-3-3': record('Opened settings utility 3'),
@@ -189,12 +201,6 @@ function AppShell() {
               'button-12-12': record('Opened preference action 12'),
               'button-13-13': record('Opened preference action 13'),
               'reset-to-factory-defaults-14': actions.resetPreferences,
-              'operations-1': () => actions.navigate('operations'),
-              'editor-2': () => actions.navigate('editor'),
-              'queues-3': () => actions.navigate('queues'),
-              'workload-4': () => actions.navigate('workload'),
-              'insights-5': () => actions.navigate('insights'),
-              'settings-6': () => actions.navigate('settings'),
               'support-7': () => actions.navigate('support'),
             } satisfies Partial<Record<SettingsAndPreferencesSurfacegateDeskActionId, () => void>>
           }

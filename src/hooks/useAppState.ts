@@ -64,13 +64,12 @@ type Action =
   | { type: 'filters:clear' }
   | { type: 'status:update' }
   | { type: 'ticket:take' }
-  | { type: 'agent:away' }
-  | { type: 'workload:bulk-reassign' }
+  | { type: 'agent:away'; agentId: string }
+  | { type: 'workload:bulk-reassign'; fromAgentId: string; toAgentId: string }
   | { type: 'preferences:save' }
   | { type: 'preferences:reset' }
   | { type: 'insights:export' }
   | { type: 'insights:report' }
-  | { type: 'storage:saved' }
   | { type: 'action:record'; label: string };
 
 function getCounts(tickets: TicketRecord[], agents: AgentRecord[]): SurfaceCounts {
@@ -83,22 +82,32 @@ function getCounts(tickets: TicketRecord[], agents: AgentRecord[]): SurfaceCount
   };
 }
 
+function getNextTicketNumber(tickets: TicketRecord[]): number {
+  return (
+    tickets.reduce((highest, ticket) => {
+      const match = /^sg-(\d+)$/.exec(ticket.id);
+      return match ? Math.max(highest, Number(match[1])) : highest;
+    }, 1042) + 1
+  );
+}
+
 function buildInitialState(): AppState {
   const persisted = loadPersistedState();
   const activeScreen = persisted.data.activeScreen ?? 'operations';
   const selectedRecord = persisted.data.selectedRecord ?? initialTickets[0]?.id ?? null;
+  const tickets = initialTickets;
+  const agents = initialAgents;
 
   return {
     activeScreen,
-    route: activeScreen,
     selectedRecord,
-    selectedTicketId: selectedRecord,
     activePanel: persisted.data.activePanel ?? 'ticket-operations',
-    counts: getCounts(initialTickets, initialAgents),
+    counts: getCounts(tickets, agents),
     storageStatus: persisted.error ? 'recovered' : persisted.data.activeScreen ? 'restored' : 'idle',
     lastError: persisted.error,
-    tickets: initialTickets,
-    agents: initialAgents,
+    nextTicketNumber: getNextTicketNumber(tickets),
+    tickets,
+    agents,
     preferences: {
       ...defaultPreferences,
       ...persisted.data.preferences,
@@ -121,7 +130,6 @@ function reducer(state: AppState, action: Action): AppState {
         {
           ...state,
           activeScreen: action.route,
-          route: action.route,
           activePanel: action.route === 'support' ? 'recovery' : action.route,
           lastError: null,
         },
@@ -132,12 +140,11 @@ function reducer(state: AppState, action: Action): AppState {
         {
           ...state,
           selectedRecord: action.recordId,
-          selectedTicketId: action.recordId,
         },
         action.recordId ? `Selected ${action.recordId}` : 'Selection cleared',
       );
     case 'ticket:create': {
-      const id = `sg-${1043 + state.tickets.length}`;
+      const id = `sg-${state.nextTicketNumber}`;
       const ticket: TicketRecord = {
         id,
         title: 'New service desk ticket',
@@ -151,10 +158,9 @@ function reducer(state: AppState, action: Action): AppState {
         {
           ...state,
           activeScreen: 'editor',
-          route: 'editor',
           activePanel: 'ticket-editor',
           selectedRecord: id,
-          selectedTicketId: id,
+          nextTicketNumber: state.nextTicketNumber + 1,
           tickets,
           counts: getCounts(tickets, state.agents),
           storageStatus: 'saved',
@@ -166,10 +172,10 @@ function reducer(state: AppState, action: Action): AppState {
     case 'ticket:save':
       return log({ ...state, storageStatus: 'saved', lastError: null }, 'Ticket changes saved');
     case 'ticket:discard':
-      return log({ ...state, activeScreen: 'operations', route: 'operations', activePanel: 'ticket-operations' }, 'Draft discarded');
+      return log({ ...state, activeScreen: 'operations', activePanel: 'ticket-operations' }, 'Draft discarded');
     case 'ticket:resolve': {
       const tickets = state.tickets.map((ticket) =>
-        ticket.id === state.selectedTicketId ? { ...ticket, status: 'resolved' as const } : ticket,
+        ticket.id === state.selectedRecord ? { ...ticket, status: 'resolved' as const } : ticket,
       );
       return log({ ...state, tickets, counts: getCounts(tickets, state.agents), storageStatus: 'saved' }, 'Ticket resolved');
     }
@@ -184,13 +190,13 @@ function reducer(state: AppState, action: Action): AppState {
     case 'status:update':
       return log({ ...state, storageStatus: 'saved' }, 'Status updated');
     case 'ticket:take':
-      return log({ ...state, selectedRecord: state.selectedTicketId, storageStatus: 'saved' }, 'Ticket assigned to current agent');
+      return log({ ...state, storageStatus: 'saved' }, 'Ticket assigned to current agent');
     case 'agent:away': {
-      const agents = state.agents.map((agent) => (agent.id === 'sl' ? { ...agent, status: 'away' as const } : agent));
+      const agents = state.agents.map((agent) => (agent.id === action.agentId ? { ...agent, status: 'away' as const } : agent));
       return log({ ...state, agents, counts: getCounts(state.tickets, agents), storageStatus: 'saved' }, 'Away status set');
     }
     case 'workload:bulk-reassign': {
-      const tickets = state.tickets.map((ticket) => (ticket.ownerId === 'ej' ? { ...ticket, ownerId: 'sl' } : ticket));
+      const tickets = state.tickets.map((ticket) => (ticket.ownerId === action.fromAgentId ? { ...ticket, ownerId: action.toAgentId } : ticket));
       return log({ ...state, tickets, storageStatus: 'saved' }, 'Over-capacity workload reassigned');
     }
     case 'preferences:save':
@@ -210,8 +216,6 @@ function reducer(state: AppState, action: Action): AppState {
       return log({ ...state, storageStatus: 'saved' }, 'Insight summary exported');
     case 'insights:report':
       return log({ ...state, activePanel: 'scheduled-report', storageStatus: 'saved' }, 'Report created');
-    case 'storage:saved':
-      return state.storageStatus === 'saved' ? state : { ...state, storageStatus: 'saved' };
     case 'action:record':
       return log({ ...state, storageStatus: 'saved', lastError: null }, action.label);
     default:
@@ -225,9 +229,6 @@ export function useAppState() {
   useEffect(() => {
     try {
       persistState(state);
-      if (state.storageStatus !== 'saved') {
-        dispatch({ type: 'storage:saved' });
-      }
     } catch {
       // localStorage can be unavailable in locked-down browser contexts.
     }
@@ -249,8 +250,8 @@ export function useAppState() {
       takeTicket: () => dispatch({ type: 'ticket:take' }),
       resolveTicket: () => dispatch({ type: 'ticket:resolve' }),
       addNote: () => dispatch({ type: 'ticket:note' }),
-      setAwayStatus: () => dispatch({ type: 'agent:away' }),
-      bulkReassign: () => dispatch({ type: 'workload:bulk-reassign' }),
+      setAwayStatus: (agentId) => dispatch({ type: 'agent:away', agentId }),
+      bulkReassign: (fromAgentId, toAgentId) => dispatch({ type: 'workload:bulk-reassign', fromAgentId, toAgentId }),
       savePreferences: () => dispatch({ type: 'preferences:save' }),
       resetPreferences: () => dispatch({ type: 'preferences:reset' }),
       exportSummary: () => dispatch({ type: 'insights:export' }),

@@ -46,13 +46,12 @@ export interface SurfaceCounts {
 
 export interface AppState {
   activeScreen: SurfaceRoute;
-  route: SurfaceRoute;
   selectedRecord: string | null;
-  selectedTicketId: string | null;
   activePanel: string;
   counts: SurfaceCounts;
   storageStatus: StorageStatus;
   lastError: string | null;
+  nextTicketNumber: number;
   tickets: TicketRecord[];
   agents: AgentRecord[];
   preferences: SurfacePreferences;
@@ -72,8 +71,8 @@ export interface AppActions {
   takeTicket: () => void;
   resolveTicket: () => void;
   addNote: () => void;
-  setAwayStatus: () => void;
-  bulkReassign: () => void;
+  setAwayStatus: (agentId: string) => void;
+  bulkReassign: (fromAgentId: string, toAgentId: string) => void;
   savePreferences: () => void;
   resetPreferences: () => void;
   exportSummary: () => void;
