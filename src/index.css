@@ -59,13 +59,27 @@ body {
   [data-setfarm-root="surfacegate-desk"] [class*="min-w-"],
   [data-setfarm-root="surfacegate-desk"] [class*="w-["],
   [data-setfarm-root="surfacegate-desk"] [class*="max-w-"] {
+    min-width: 0 !important;
     max-width: 100% !important;
   }
 
   [data-setfarm-root="surfacegate-desk"] table {
-    width: calc(100vw - 2rem) !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
     font-size: 0.8125rem;
     margin-inline: auto;
+  }
+
+  [data-setfarm-root="surfacegate-desk"] table [class*="min-w-"],
+  [data-setfarm-root="surfacegate-desk"] table [class*="w-"],
+  [data-setfarm-root="surfacegate-desk"] table [class*="max-w-"],
+  [data-setfarm-root="surfacegate-desk"] th,
+  [data-setfarm-root="surfacegate-desk"] td {
+    min-width: 0 !important;
+    width: auto !important;
+    max-width: 40vw !important;
+    white-space: normal !important;
   }
 }
 
