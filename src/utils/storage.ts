@@ -54,6 +54,14 @@ function toPersistedState(value: unknown): Partial<PersistedState> {
   return data;
 }
 
+function removePersistedState() {
+  try {
+    window.localStorage.removeItem(STORAGE_KEY);
+  } catch {
+    // Storage can be blocked in locked-down browser contexts.
+  }
+}
+
 export function loadPersistedState(): { data: Partial<PersistedState>; error: string | null } {
   try {
     const raw = window.localStorage.getItem(STORAGE_KEY);
@@ -63,7 +71,7 @@ export function loadPersistedState(): { data: Partial<PersistedState>; error: st
 
     return { data: toPersistedState(JSON.parse(raw)), error: null };
   } catch {
-    window.localStorage.removeItem(STORAGE_KEY);
+    removePersistedState();
     return {
       data: {},
       error: 'Saved SurfaceGate Desk data was corrupt and has been reset.',
@@ -83,5 +91,5 @@ export function persistState(state: AppState) {
 }
 
 export function clearPersistedState() {
-  window.localStorage.removeItem(STORAGE_KEY);
+  removePersistedState();
 }
